@@ -1,3 +1,4 @@
 token: "5636911531:AAFnU3YELW3LHRnTXBOuPmhcsh3C73W53_o"
 db_path: "repository/repo.db"
 host: "api.telegram.org"
+log_level: "info"

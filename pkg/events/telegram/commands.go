@@ -19,7 +19,7 @@ const (
 func (d *Dispatcher) doCmd(ctx context.Context, text string, chatID int, username string) error {
 	text = strings.TrimSpace(text)
 
-	d.logger.Infof("got new command ```%s``` from ```%s```", text, username)
+	d.logger.Infof("got new command: `%s` from %s", text, username)
 
 	if isSavingUrl(text) {
 		return d.savePage(ctx, chatID, text, username)

@@ -8,9 +8,10 @@ import (
 )
 
 type Config struct {
-	Token  string `yml:"token"`
-	DbPath string `yml:"db_path"`
-	Host   string `yml:"host"`
+	Token    string `yml:"token"`
+	DbPath   string `yml:"db_path"`
+	Host     string `yml:"host"`
+	LogLevel string `yml:"log_level"`
 }
 
 var cfg *Config
@@ -23,16 +24,9 @@ func GetCfg() *Config {
 		cfg = &Config{}
 		if err := cleanenv.ReadConfig("config.yml", cfg); err != nil {
 			help, _ := cleanenv.GetDescription(cfg, nil)
-			logger.Info("Инф из YML")
 			logger.Info(help)
 			logger.Fatal(err)
 		}
-		// if err := cleanenv.ReadEnv(cfg); err != nil {
-		// 	help, _ := cleanenv.GetDescription(cfg, nil)
-		// 	logger.Info("Инф из ENV")
-		// 	logger.Info(help)
-		// 	logger.Fatal(err)
-		// }
 	})
 	return cfg
 }

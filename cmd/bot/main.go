@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	logger := logging.GetLogger("trace")
 	cfg := config.GetCfg()
+	logger := logging.GetLogger(cfg.LogLevel)
 	storage, err := sqlite.New(cfg.DbPath)
 	if err != nil {
 		logger.Fatal("Не удалось подключиться к БД", err)

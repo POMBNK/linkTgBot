@@ -95,7 +95,6 @@ func (c *Client) doRequest(q url.Values, method string) ([]byte, error) {
 	req.URL.RawQuery = q.Encode()
 
 	// Отправляем получившийся объект запроса.
-	// c.logger.Debug("Выполянем GET зарос...")
 	resp, err := c.client.Do(req)
 	if err != nil {
 		c.logger.Error("Не удалось выполнить GET запрос.")
