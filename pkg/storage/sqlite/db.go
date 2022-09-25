@@ -3,7 +3,6 @@ package sqlite
 import (
 	"context"
 	"database/sql"
-
 	"github.com/POMBNK/linktgBot/pkg/e"
 	"github.com/POMBNK/linktgBot/pkg/storage"
 	_ "github.com/mattn/go-sqlite3"
@@ -57,7 +56,7 @@ func (s *Storage) PickRandom(ctx context.Context, userName string) (*storage.Pag
 
 	err := s.db.QueryRowContext(ctx, q, userName).Scan(&url)
 	if err == sql.ErrNoRows {
-		return nil, nil
+		return nil, storage.ErrNoSavedPages
 	}
 	if err != nil {
 		return nil, e.Wrap("Не удалось выбрать статью", err)
@@ -70,26 +69,13 @@ func (s *Storage) PickRandom(ctx context.Context, userName string) (*storage.Pag
 
 // Remove удаляет выбранную статью из хранилища.
 func (s *Storage) Remove(ctx context.Context, p *storage.Page) error {
-	q := `DELETE url FROM pages WHERE url = ? AND user_name = ?`
+	q := `DELETE FROM pages WHERE url = ? AND user_name = ?`
 
 	if _, err := s.db.ExecContext(ctx, q, p.URL, p.UserName); err != nil {
 		return e.Wrap("Не удалось удалить статью", err)
 	}
 	return nil
 }
-
-// ну проверим наскок я правильно сделал кек
-
-// IsExist проверяет существует ли данная статья в хранилище.
-//func (s *Storage) IsExist(ctx context.Context, p *storage.Page) (bool, error) {
-//	q := `SELECT EXISTS(SELECT url = ? FROM pages WHERE user_name = ?)`
-//
-//	_, err := s.db.ExecContext(ctx, q, p.URL, p.UserName)
-//	if err != nil {
-//		return false, e.Wrap("Такой записи не существует", err)
-//	}
-//	return true, nil
-//}
 
 func (s *Storage) IsExist(ctx context.Context, p *storage.Page) (bool, error) {
 	q := `SELECT COUNT(*) FROM pages WHERE url = ? AND user_name = ?`
