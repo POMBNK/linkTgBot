@@ -116,7 +116,6 @@ func (c *Client) SendMessage(chatID int, text string) error {
 	q := url.Values{}
 	q.Add("chat_id", strconv.Itoa(chatID))
 	q.Add("text", text)
-	c.logger.Debug("Выполняем запрос Send Message...")
 	_, err := c.doRequest(q, "sendMessage")
 	if err != nil {
 		c.logger.Error("Не удалось выполнить запрос Send Message...")
