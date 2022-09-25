@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 
-	"github.com/POMBNK/linktgBot/logging"
 	"github.com/POMBNK/linktgBot/pkg/clients/telegram"
 	"github.com/POMBNK/linktgBot/pkg/e"
 	"github.com/POMBNK/linktgBot/pkg/events"
+	"github.com/POMBNK/linktgBot/pkg/logging"
 	"github.com/POMBNK/linktgBot/pkg/storage"
 )
 

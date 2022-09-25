@@ -3,7 +3,7 @@ package config
 import (
 	"sync"
 
-	"github.com/POMBNK/linktgBot/logging"
+	"github.com/POMBNK/linktgBot/pkg/logging"
 	"github.com/ilyakaznacheev/cleanenv"
 )
 

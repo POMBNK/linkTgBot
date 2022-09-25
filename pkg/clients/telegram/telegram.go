@@ -8,8 +8,8 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/POMBNK/linktgBot/logging"
 	"github.com/POMBNK/linktgBot/pkg/e"
+	"github.com/POMBNK/linktgBot/pkg/logging"
 )
 
 const (

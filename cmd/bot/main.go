@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/POMBNK/linktgBot/config"
-	"github.com/POMBNK/linktgBot/logging"
 	tgClient "github.com/POMBNK/linktgBot/pkg/clients/telegram"
 	eventconsumer "github.com/POMBNK/linktgBot/pkg/consumer/eventConsumer"
 	"github.com/POMBNK/linktgBot/pkg/events/telegram"
+	"github.com/POMBNK/linktgBot/pkg/logging"
 	"github.com/POMBNK/linktgBot/pkg/storage/sqlite"
 )
 

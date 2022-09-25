@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/POMBNK/linktgBot/logging"
 	"github.com/POMBNK/linktgBot/pkg/events"
+	"github.com/POMBNK/linktgBot/pkg/logging"
 )
 
 type Consumer struct {
